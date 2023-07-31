@@ -33,10 +33,10 @@ function db_conn()
 {
 	
 	$PDOLink;
-	$PDOHostVar       = '172.104.120.19:3306';
+	$PDOHostVar       = '';
 	$PDODBnameVar     = 'charge16';
-	$PDODBuserVar     = 'barry';
-	$PDODBpasswordVar = 'su631811';
+	$PDODBuserVar     = '';
+	$PDODBpasswordVar = '';
 
 	// 正規PDO連接
 	try {   
