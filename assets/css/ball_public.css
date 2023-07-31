@@ -1,0 +1,408 @@
+/* PC版 */
+body {
+   font-family: 'Times New Roman', Times, serif;
+   font-size: 24px;  
+   /* background-color: #FBE87E; */
+} 
+ 
+/* 返回CSS */
+.back_icon {
+    margin: 50px 100px;
+}
+
+.after-box {
+    clear:both
+}
+
+/* 三角形產生器 */
+.triangle-after {
+    position: absolute;
+    float: left;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 30px 30px 0;
+    border-color: transparent rgba(30, 189, 65, 0.5) transparent transparent;
+    margin: 0px 100px;
+}
+
+.main_index {
+    text-align: center;
+    margin: 50px auto;
+}
+
+/* 容器 */
+.ball_container {
+    width: 100%;
+    margin: -35px -12%;
+    text-align: center;
+    /* border-radius:0 30% 0 0; */
+    /* border-style: outset; */
+}
+
+.ball_title {
+    text-align: center;
+    margin: 0px auto;
+    margin: 20px 140px;
+    font-size: 40px;
+    font-family: 'Microsoft JhengHei';
+    font-weight:bold;
+    color: #ffffff;
+    text-shadow:3px 3px 3px #0d862b;
+}
+
+/* 內頁標題 */
+.ball_show_container {
+    width: 100%;
+    margin: -35px 0%;
+    text-align: center;
+    /* border-radius:0 30% 0 0; */
+    /* border-style: outset; */    
+}
+
+.ball_show_title {
+    text-align: center;
+    margin: 0px auto;
+    margin: 20px 140px;
+    font-size: 40px;
+    font-family: 'Microsoft JhengHei';
+    font-weight:bold;
+    color: #ffffff;
+    text-shadow:3px 3px 3px #0d862b;
+}
+
+.ball_show_div_input {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.ball_show_input {
+    border-radius: 100px 100px 100px 100px; 
+}
+
+.ball_show_input::-webkit-input-placeholder { /* WebKit browsers */
+    color:red;
+}
+
+.ball_show_div_button {
+    /* margin: 5% 25% 0px; */
+    height: 50px;
+    width: 100%;
+    margin: 5% 37% 0px;
+}
+
+.ball_show_button {
+    float: left;
+    width: 10%;
+    margin: 0px 20px;
+    background-color: rgba(30, 189, 65, 0.5);
+}
+
+.ball_show_a {
+    float: left;
+    width: 10%;
+    margin: 0px 20px;
+    background-color: rgba(30, 189, 65, 0.5);
+    height: 55px;
+    padding: 15px;
+}
+/* End內頁標題 */
+
+.nav {
+    /* float: left; */
+    width: 90%;   
+    color: blue;
+    background-color: #a59f9f;
+    opacity:0.5;
+    /* border-radius: 50%; */
+}
+
+hr {
+    border-top: 1px dotted red;
+}
+
+.ball_contact {
+    width: 100%;
+    margin: 1% 21%;
+    text-align: center;
+    /* box-shadow: 3px 3px 3px; */
+    /* box-shadow:2px 2px 2px rgba(20%,20%,40%,0.6),4px 4px 6px rgba(20%,20%,40%,0.4),6px 6px 12px rgba(20%,20%,40%,0.4); */
+}
+
+.ball_button {
+    float: left;
+    width: 9%;
+    height: 80px;
+    border-radius:0 25% 0 0;
+    border:1px rgb(188, 224, 196) solid;
+    border-radius: 0% 40% 0% 40%;
+    box-shadow: 4px 2px 1px rgba(30, 189, 65, 0.5),inset 1px 1px 1px 1px rgba(30, 162, 51, 0.82);
+}
+
+.ball_button img {
+    width: 100%;
+    height: 64px;
+    padding: 5px;
+}
+
+.ball_button_input{
+    padding-left: 2%;
+    box-shadow: 4px 2px 1px rgba(30, 189, 65, 0.5),inset 1px 1px 4px 2px rgba(30, 162, 51, 0.82);
+    font-size: 39px;
+    font-family: 'Microsoft JhengHei';
+    font-weight:bold;
+    float: left;
+    color: #ffffff;
+    border-radius:0 50px 0 0;
+    background-color: #003333;
+    width: 31%;
+    height: 80px;
+    letter-spacing: 10px;　
+}
+
+.ball_logo {
+    margin: -30px 0px;
+    z-index: -1;
+}
+
+.ball_logo_pic {
+    position:absolute;
+    top:0px;
+    left:0px;
+    z-index:-1;
+    margin: 8% 56% auto;
+}
+
+/* RWD手機版 */
+@media screen and (max-width: 800px) {
+
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;  
+        /* background-color: #FBE87E; */
+    }
+
+    /* 三角形產生器 */
+    .triangle-after {
+        position: absolute;
+        float: left;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 15px 0;
+        border-color: transparent rgba(30, 189, 65, 0.5) transparent transparent;
+        margin: 0px 70px;
+    }
+
+    /* 容器 */
+    .ball_container {
+        width: 110%;
+        margin: -35px -12%;
+        text-align: center;
+        /* border-radius:0 30% 0 0; */
+        /* border-style: outset; */
+    }
+
+
+    .ball_title {
+        text-align: left;
+        margin: 15px 320px;
+        font-size: 25px;
+        font-family: 'Microsoft JhengHei';
+        font-weight:bold;
+        color: #ffffff;
+        text-shadow:3px 3px 3px #0d862b;
+    }
+
+    .ball_contact {
+        width: 55%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .ball_button {
+        float: left;
+        width: 20%;
+        height: 70px;
+        border-radius:0 25% 0 0;
+        border:1px rgb(188, 224, 196) solid;
+    }
+    
+    .ball_button img {
+        width: 100%;
+        height: 64px;
+        padding: 5px;
+    }
+    
+    .ball_button_input{
+        box-shadow: 4px 2px 1px rgba(30, 189, 65, 0.5),inset 1px 1px 4px 2px rgba(30, 162, 51, 0.82);
+        font-size: 15px;
+        font-family: 'Microsoft JhengHei';
+        font-weight:bold;
+        float: left;
+        color: #ffffff;
+        border-radius:0 50px 0 0;
+        background-color: #003333;
+        width: 75%;
+        height: 70px;
+        letter-spacing: 10px;　
+    }
+
+    .ball_logo {
+        margin: -30px 0px;
+        z-index: -1;
+    }
+    
+    .ball_logo_pic {
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:-1;
+        margin: 8% 54% auto;
+    }
+
+
+}
+
+/* 手機版 */
+@media screen and (max-width: 480px) {
+
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 24px;  
+        /* background-color: #FBE87E; */
+    }
+
+    /* 返回CSS */
+    .back_icon {
+        margin: 50px 20px;
+    }
+
+    /* 三角形產生器 */
+    .triangle-after {
+        position: absolute;
+        float: left;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 15px 0;
+        border-color: transparent rgba(30, 189, 65, 0.5) transparent transparent;
+        margin: 0px 57px;
+    }
+
+
+    .ball_title {
+        text-align: left;
+        margin: 15px 70px;
+        font-size: 25px;
+        font-family: 'Microsoft JhengHei';
+        font-weight:bold;
+        color: #ffffff;
+        text-shadow:3px 3px 3px #0d862b;
+    }
+
+    .ball_contact {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .ball_button {
+        float: left;
+        width: 20%;
+        height: 70px;
+        border-radius:0 25% 0 0;
+        border:1px rgb(188, 224, 196) solid;
+    }
+    
+    .ball_button img {
+        width: 100%;
+        height: 64px;
+        padding: 5px;
+    }
+    
+    .ball_button_input{
+        box-shadow: 4px 2px 1px rgba(30, 189, 65, 0.5),inset 1px 1px 4px 2px rgba(30, 162, 51, 0.82);
+        font-size: 15px;
+        font-family: 'Microsoft JhengHei';
+        font-weight:bold;
+        float: left;
+        color: #ffffff;
+        border-radius:0 50px 0 0;
+        background-color: #003333;
+        width: 75%;
+        height: 70px;
+        letter-spacing: 10px;　
+    }
+
+    .ball_logo {
+        margin: -30px 0px;
+        z-index: -1;
+    }
+    
+    .ball_logo_pic {
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:-1;
+        margin: 8% 65% auto;
+    }
+
+    /* 內頁標題 */
+    .ball_show_container {
+        width: 100%;
+        margin: -35px 0%;
+        text-align: center;
+        /* border-radius:0 30% 0 0; */
+        /* border-style: outset; */    
+    }
+
+    .ball_show_title {
+        text-align: center;
+        margin: 0px auto;
+        margin: 20px 45px;
+        font-size: 25px;
+        font-family: 'Microsoft JhengHei';
+        font-weight:bold;
+        color: #ffffff;
+        text-shadow:3px 3px 3px #0d862b;
+    }
+
+    .ball_show_div_input {
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    .ball_show_input {
+        border-radius: 100px 100px 100px 100px; 
+    }
+
+    .ball_show_input::-webkit-input-placeholder { /* WebKit browsers */
+        color:red;
+    }
+
+    .ball_show_div_button {
+        /* margin: 5% 25% 0px; */
+        height: 50px;
+        width: 175%;
+        margin: 20% 25% 0px;
+    }
+
+    .ball_show_button {
+        float: left;
+        width: 10%;
+        margin: 0px 20px;
+        background-color: rgba(30, 189, 65, 0.5);
+    }
+
+    .ball_show_a {
+        float: left;
+        width: 10%;
+        margin: 0px 20px;
+        background-color: rgba(30, 189, 65, 0.5);
+        height: 57px;
+        padding: 15px;
+    }
+    /* End內頁標題 */
+
+}

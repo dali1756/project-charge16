@@ -1,0 +1,225 @@
+/*調整修改用CSS*/
+/*footer蓋過內容問題*/
+#footer{
+    position: relative;
+}
+ /*文字*/
+ /*大標題*/
+.h3, .h4 {
+    margin: 0 auto;
+    font-weight: bold;
+    text-align: center;
+}
+h1.h3 ,span.h5{
+    text-align: center;
+}
+h2.h3{
+    font-weight: normal;
+}
+/*label文字*/
+.label-font{
+    text-align: center;
+    font-weight: 900;
+    font-size: 16px;
+}
+
+/*MENU*/
+.glyphicon-option-horizontal:before{
+    content:"...";
+    font-size: 6rem;
+    letter-spacing:-7.5px;
+}
+
+#header nav.left{
+
+    top:-2.85em !important;
+    left:1.75rem; 
+}
+#menu.visible{
+    top:-6em;
+    height: 2000px;
+}
+#menu.visible a{
+    font-size: 14px;
+}
+.glyphicon-cog:before{
+    content: "&#xf013" ;
+}
+/*ICON 大小*/
+
+@media (min-width: 768px) {
+.sidebar .nav-item .nav-link i {
+    font-size: 1rem;
+}
+.sidebar .nav-item .nav-link span{
+    font-size: 1rem;
+    color: white;
+    font-weight: bolder;
+}
+.sidebar.toggled .nav-item .nav-link span{
+    font-size: unset;
+}
+}
+.chart-size {
+    font-size: 9rem;
+    color: #58B2DC;
+}
+
+/*color*/
+.bg-gray{
+    background-color: #f8f9fc;
+}
+.text-orange{
+    color: #f7931e;
+    font-weight: bold;
+    font-size:14px;
+
+}
+/*Login背景*/
+.bg-gradient-primary{
+    background-image:linear-gradient(180deg,#36b9cc 10%,#4e73df 100%)
+}
+.footer-bg{
+    background-color: none;
+}
+.copyright span{
+    color: #3a3b45;
+    font-size: 14px;
+}
+.modal-footer{
+    border-top: unset;
+}
+
+/*查詢切換頁BTN*/
+.nav-tabs .nav-link.active{
+    background-color: rgba(27, 171, 171, 0.8);
+
+}
+
+.nav-tabs .nav-link2.active {
+    background-color: rgba(247, 147, 30, 0.7);
+}
+a:hover{
+    text-decoration: none;
+}
+/*查詢切換頁BTN END*/
+.border-left-primary{
+    border-left: none !important;
+}
+.password-border{
+    border:6px  double #36b9cc;
+}
+.form-control2{
+    border:1.75px solid rgb(150, 150, 150);
+}
+/*MENU color*/
+.bg-menu{
+    background-color: #85c8f3;
+}
+.sidebar-dark hr.sidebar-divider{
+    border-top: 1px solid #00458aa1;
+}
+.sidebar-dark .nav-item .nav-link i{
+    color:#00458aa1;
+}
+.sidebar .nav-item .nav-link span , .sidebar-dark .nav-item .nav-link{
+    color:#00458a;
+}
+.sidebar-dark #sidebarToggle::after ,.sidebar-dark.toggled #sidebarToggle::after{
+    color: #00458a;
+}
+
+/*MENU ICON 滑入顏色*/
+.sidebar-dark .nav-item .nav-link:active i,
+.sidebar-dark .nav-item .nav-link:focus i,
+.sidebar-dark .nav-item .nav-link:hover i{
+    color:#00458aa1;
+}
+/*返回BTN 顏色*/
+.back-btn a{
+    color:#ffc107;
+}
+/*標籤文字顏色*/
+.label-font{
+    color:black;
+}
+
+/*排版*/
+.icon-mar, .table-mar ,.btn-mar, .span-mar{
+    margin-top: 50px;
+}
+.icon-center{
+    text-align: center;
+    line-height:2.5;
+}
+.form-center{
+    margin: 0 auto; 
+    color: black;
+    line-height: 3;
+}
+.btn-block{
+    margin: 50px 0;
+}
+.menu-mar{
+    margin-top: -10px;
+}
+.card-border{
+    border-radius: 0;
+    padding: 1.25rem;
+}
+.nav-border, .nav-border a ,  .nav-link.active span{
+    border-bottom: none;
+    text-align: center;
+    color: black;
+}
+/*Login Page*/
+.custom-control-label::after, .custom-control-label::before{
+    top: .75rem;
+}
+
+
+/*查詢紀錄*/
+.form-a ,.form-a2{
+    margin: 0 auto;
+    background-color: rgba(37, 152, 150, 0.6);
+    border:none;
+    color: black;
+    font-weight: bolder;
+}
+    /*報表/付款查詢匯出BTN*/
+.form-a2{
+    background-color: rgba(247, 147, 30, 0.9);
+}
+button:hover{
+    background-color: #60a2a1;
+}
+.btn:hover, .text-black{
+    color: black;
+
+}
+.btn2:hover{
+    color:white ;
+}
+
+.search-mar{
+    margin: 0 100px;
+}
+
+/*上下頁BTN*/
+.page-item.active .page-link{
+    background-color: #259896;
+    border-color: #259896;
+}
+
+@media (max-width: 768px){
+.d-sm-inline-block {
+    display: none!important;
+}
+}
+/*表單選項設定*/
+select {
+    -moz-appearance: menulist;
+    -webkit-appearance: menulist;
+    -ms-appearance: menulist;
+    appearance: menu;
+}

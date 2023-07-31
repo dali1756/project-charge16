@@ -1,0 +1,136 @@
+/*=====style.css=====*/
+/*調整修改用CSS*/
+html{
+    overflow-x:hidden;
+    overflow-inline: hidden;
+}
+/*header*/
+#header{
+    background-color:rgba(246, 246, 246, 0.7);
+    position: fixed;
+    height: auto;
+    margin: 0 auto;
+}
+/*LOGO 大小*/
+.school_image{
+    width: 100%;
+    height:auto;
+    margin: 0px auto !important;
+}
+@media screen and (max-width: 950px) {
+    .school_image {
+        margin: 2vh auto; 
+        mix-blend-mode: unset; 
+        filter: brightness(99%);
+    }
+}
+
+/*文字*/
+/*字體都加在這*/
+.wrapper h1, #footer{
+    font-family:"微軟正黑體",-apple-system,BlinkMacSystemFont,"Segoe UI",
+    Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji",
+    "Segoe UI Emoji","Segoe UI Symbol" ;
+    color:#006666;
+ }
+  /*大標題*/
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    color:#193939;
+}
+ .text-green{
+    color: #006666;
+    font-weight: bold;
+    font-size:21px;
+}
+.text-gray{
+    color:#7C7B7B;
+}
+
+
+ /*每頁id="main"*/
+.wrapper{
+    padding-top: 3em;
+}
+
+/*BTN RWD 置中*/
+.justify-content-center{
+    display: flex;
+}
+/* Scroll to top button */
+.scroll-to-top {
+    z-index: 99;
+    background: rgba(255,131 ,103,.85);
+    /* background: rgba(90,92,105,.85); */
+}
+.scroll-to-top:hover {
+    background: rgba(255,131 ,103,.85);
+}
+/*card設定*/
+.card-header{
+    background-color:#006666;
+}
+.card-green{
+    background-color: #F0F7F7;
+    border:2px solid #006666;
+}
+.nowsystem ul li{
+    display: block;
+}
+/*提示*/
+.alert-orange{
+    color: #FF8367;
+    background-color: #FFF4F1;
+    border-color: #FF8367;
+    font-weight: 700;
+    /* margin:0 auto; */
+    word-break:keep-all;
+}
+
+/*footer*/
+#footer{
+    padding:10px  0em;
+    background: #006666;
+    text-align: center;
+    color: #FFFFFF;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+    height: 64px;
+}
+.footer-bg{
+    background-color: none;
+}
+#footer .copyright{
+    border-top:none;
+    font-size: 18px;
+    color:unset;
+    padding: 15px 0;
+    margin: 0;
+}
+.copyright span{
+    color: #3a3b45;
+    font-size: 14px;
+}
+/*school_image*/
+@media screen and (min-width:320px) and (max-width:768px){
+    .school_image {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 950px) {
+    .school_image {
+        margin: 2vh auto; 
+    }
+}
+
+@media screen and (max-width: 480px){
+    #footer {
+        display: block;
+    }
+    .alert-orange{
+        font-size:18px;
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "uuid": "261fa29f-6c92-4920-9c16-b42be8f31922",
+    "invNo": "HN13000120",
+    "carrierID1": "638054849",
+    "invDate": "2023-07-18 16:00:56",
+    "randomNumber": "2084",
+    "totalAmount": "1",
+    "Details": [
+        {
+            "amount": "1.00",
+            "quantity": "1.00",
+            "unitprice": "1.00",
+            "description": "\u5145\u96fb\u8cbb\u7528"
+        }
+    ]
+}
