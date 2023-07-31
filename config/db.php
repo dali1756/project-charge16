@@ -34,7 +34,7 @@ function db_conn()
 	
 	$PDOLink;
 	$PDOHostVar       = '';
-	$PDODBnameVar     = 'charge16';
+	$PDODBnameVar     = '';
 	$PDODBuserVar     = '';
 	$PDODBpasswordVar = '';
 
