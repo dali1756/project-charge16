@@ -1,46 +1,33 @@
 <?php 
-
 include('header_layout.php'); 
 include('nav.php'); 
 include('chk_log_in.php'); 
-// include('RefundTimeFunction.php');
-
 $pagesize = 10;
-
 $row;
 $act = $_GET['act'];
 $sid = $_GET['sid'];
 $wid = $_GET['weekday'];
-
 $week_opt;
 $mode_opt;
 $btn_name;
-
-// $sql = "SELECT * FROM `machine` LIMIT 0, 1";
 $sql = "SELECT * FROM `seat` WHERE id = '{$sid}'";
 $rs  = $PDOLink->query($sql);
 $tmp = $rs->fetch();
-
 $ps  = $tmp['number'];
 $ref = $tmp['refundcertification'];
 $s_option = "<option value='%s' %s>%s</option>";
-
 for($i=1; $i < 5; $i++) {
 	if($i == 2) continue; // 保留
 	$opt = ($tmp['mode'] == $i) ? 'selected' : '';
 	$mode_opt .= sprintf($s_option, $i, $opt, get_mode($i));
 }
-
-
 ?>
 <!-- 教官查詢房號  -->
 <section id="main" class="wrapper">
-
 	<h2 style="margin-top: -30px;" align="center">模式設定</h2>
 	<div class="col-12"><a href="RoomList3.php"><i class="fas fa-chevron-circle-left fa-3x"></i><label class='previous'></label></a></div>
-	
 	<div class="row">
-	<?php if($_GET['error'] == 1){ ?>
+	<?php if($_GET[error] == 1){ ?>
 		<div style="margin: 0 auto; text-align: center; width: 600px;" class="alert alert-danger" role="alert">
 			<strong>【Error】設定失敗</strong>
 		</div>
@@ -54,8 +41,6 @@ for($i=1; $i < 5; $i++) {
 		</div>
 	<?php } ?>
 	</div>
-	
-
 	<div class="inner">
 		<div class="panel">
 			<div class="panel-body col-6" style='margin:0 auto'>
@@ -72,7 +57,6 @@ for($i=1; $i < 5; $i++) {
 							<td colspan='2' align='center'><button type='submit' id='btn_submit' class='form-control btn-primary'>確定</button></td>
 						</tr> 
 					</table>
-					
 					<input type='hidden' name='act' value='<?php echo $act ?>'>
 					<input type='hidden' name='sid' value='<?php echo $sid ?>'>
 				</form>
@@ -80,21 +64,15 @@ for($i=1; $i < 5; $i++) {
 		</div>
 	</div>
 </section>
-
 <style>
 .table>tbody>tr>td{
 	text-align: right;
     vertical-align: middle;
 }
 </style>
-
 <script>
-
 function back() {
-	
 	history.go(-1);
-	
 }
 </script>
-
 <?php include('footer_layout.php'); ?>

@@ -23,7 +23,7 @@
             $data_type = $_POST["data_type"];
             $result = getcreate($PDOLink, $cname, $id, $data_type);
             if ($result) {
-                $_SESSION['message'] = '帳號已成功創建。';
+                $_SESSION["message"] = "帳號已成功創建。";
                 $_SESSION["message_type"] = "success";
             } else {
                 $_SESSION['message'] = '帳號創建失敗或已存在相同帳號。';
@@ -239,19 +239,5 @@
             document.querySelector("#edit-data_type").value = data_type;
         });
     });
-    // 檢查用戶權限
-    // setInterval(function() {
-    //     fetch("charge16/check_status.php", {
-    //         method: "POST",
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify({ id: "<?php echo $_SESSION['admin_user']['id']; ?>" })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         if (data.status === "X") {
-    //             window.location.href = "index.php";
-    //         }
-    //     });
-    // });
 </script>
 <?php include('footer_layout.php'); ?>
