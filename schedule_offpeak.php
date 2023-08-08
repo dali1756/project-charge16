@@ -68,13 +68,13 @@ for($i=0; $i < 7; $i++) {
 								開始時間 : 
 							</td>
 							<td width='40%'>
-								<input class="form-control" type="time" name="start_time" placeholder="hrs:mins" value="<?php echo $row['endtime'] ?>">
+								<input class="form-control" type="time" name="start_time" placeholder="hrs:mins" value="<?php echo $row['starttime'] ?>">
 							</td>
 							<td align="right" width='10%'>
 								結束時間 : 
 							</td>
 							<td>
-								<input class="form-control" type="time" name="end_time" placeholder="hrs:mins" value="<?php echo $row['starttime'] ?>">
+								<input class="form-control" type="time" name="end_time" placeholder="hrs:mins" value="<?php echo $row['endtime'] ?>">
 							</td>
 						</tr>
 						<tr>

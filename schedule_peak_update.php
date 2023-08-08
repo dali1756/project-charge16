@@ -2,7 +2,7 @@
 include_once("config/db.php");
 include('chk_log_in.php');
 // 當前設定
-$sql_setting = "SELECT * FROM schedule WHERE enable = '1' LIMIT 0, 1";
+$sql_setting = "SELECT s.rate, s.starttime, s.endtime FROM schedule s WHERE enable = '1' LIMIT 0, 1";
 $stmt = $PDOLink->query($sql_setting);
 $stmt_setting = $stmt->fetch();
 // 刪除所有資料
@@ -53,13 +53,13 @@ $result = $PDOLink->exec($sql_str);
 if($result) {
 	$admin_id = $_SESSION["admin_user"]["id"];
 	// 撈取更新後設定
-	$sql_update = "SELECT * FROM schedule WHERE enable = '1' LIMIT 0, 1";
+	$sql_update = "SELECT s.rate, s.starttime, s.endtime FROM schedule s WHERE enable = '1' LIMIT 0, 1";
 	$stmt_update = $PDOLink->query($sql_update);
 	$update_result = $stmt_update->fetch();
 	// 比較修改前後值
 	$change_log = "";
-	if ($stmt_setting["rate"] != $update_result["rate"]) {
-		$change_log .= "費率由{$stmt_setting['rate']} 修改為 {$update_result['rate']} ";
+	if ($stmt_setting["rate"] != $update_result["rate"] || $stmt_setting["starttime"] != $update_result["starttime"] || $stmt_setting["endtime"] != $update_result["endtime"]) {
+		$change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
 	}
 	// 寫入log_list
 	$content = $admin_id. "; 管理員修改了離峰時段設定; ". $change_log;
