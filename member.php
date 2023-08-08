@@ -91,6 +91,11 @@
 					<img class="d-block mb-3 mx-auto" src="images/帳號權限管理.png">
 					<h4>帳號權限管理</h4> </a>
 				</div>
+				<div class = "col-lg-2 col-md-6 p-4 text-center">
+					<a class = "my_product" href = "log_view.php">
+					<img class = "d-block mb-3 mx-auto" src="images/12log記錄.png">
+					<h4>Log 紀錄</h4> </a>
+				</div>
 			<?php } ?>
 		</div>
 	</div>

@@ -43,7 +43,7 @@ for($i=0; $i < 7; $i++) {
 	<div class="row">
 	<?php if($_GET[error] == 1){ ?>
 		<div style="margin: 0 auto; text-align: center; width: 600px;" class="alert alert-danger" role="alert">
-			<strong>【Error】使用者行為錯誤</strong>
+			<strong>【Error】目前已套用此設定，無須重新設定。</strong>
 		</div>
 	<?php } elseif ($_GET[error] == 2) { ?>
 		<div style="margin: 0 auto; text-align: center; width: 600px;" class="alert alert-danger" role="alert">
@@ -68,13 +68,13 @@ for($i=0; $i < 7; $i++) {
 								開始時間 : 
 							</td>
 							<td width='40%'>
-								<input class="form-control" type="time" name="start_time" placeholder="hrs:mins" value="<?php echo $row['starttime'] ?>">
+								<input disabled class="form-control" type="time" name="start_time" placeholder="hrs:mins" value="<?php echo $row['endtime'] ?>">
 							</td>
 							<td align="right" width='10%'>
 								結束時間 : 
 							</td>
 							<td>
-								<input class="form-control" type="time" name="end_time" placeholder="hrs:mins" value="<?php echo $row['endtime'] ?>">
+								<input disabled class="form-control" type="time" name="end_time" placeholder="hrs:mins" value="<?php echo $row['starttime'] ?>">
 							</td>
 						</tr>
 						<tr>

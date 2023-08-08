@@ -2,9 +2,21 @@
 include_once("config/db.php");
 include('chk_log_in.php');
 // 當前設定
-$sql_setting = "SELECT s.rate, s.starttime, s.endtime FROM schedule s WHERE enable = '1' LIMIT 0, 1";
+$sql_setting = "SELECT s.rate, s.starttime, s.endtime, s.weeknumber FROM schedule s WHERE enable = '1' LIMIT 0, 1";
 $stmt = $PDOLink->query($sql_setting);
 $stmt_setting = $stmt->fetch();
+$originalSaturdayCheck = false;
+$originalSundayCheck = false;
+foreach ($settings as $setting) {
+    if ($setting["weeknumber"] == 6) {
+        $originalSaturdayCheck = true;
+    } elseif ($setting["weeknumber"] == 7) {
+        $originalSundayCheck = true;
+    }
+    if ($originalSaturdayCheck && $originalSundayCheck) {
+        break;
+    }
+}
 // 刪除所有資料
 $sql_str = "DELETE FROM `schedule`;";
 $weeks   = [1, 2, 3, 4, 5];
@@ -58,9 +70,72 @@ if($result) {
 	$update_result = $stmt_update->fetch();
 	// 比較修改前後值
 	$change_log = "";
-	if ($stmt_setting["rate"] != $update_result["rate"] || $stmt_setting["starttime"] != $update_result["starttime"] || $stmt_setting["endtime"] != $update_result["endtime"]) {
-		$change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+	$ps6_check = ($ps6 != "") ? true : false;
+	$ps0_check = ($ps0 != "") ? true : false;
+	// $change_log = "";
+	// if ($stmt_setting["rate"] != $update_result["rate"] || $stmt_setting["starttime"] != $update_result["starttime"] || $stmt_setting["endtime"] != $update_result["endtime"]) {
+	// 	$change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+	// }
+
+	// $timechange = ($stmt_setting["rate"] != $update_result["rate"] || $stmt_setting["starttime"] != $update_result["starttime"] || $stmt_setting["endtime"] != $update_result["endtime"]);
+	// if ($timechange) {
+	// 	$change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+	// }
+	
+
+	$timechange = ($stmt_setting["rate"] != $update_result["rate"] || $stmt_setting["starttime"] != $update_result["starttime"] || $stmt_setting["endtime"] != $update_result["endtime"]);
+	
+	// $change_log = "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+
+	// if ($timechange) {
+    //     $change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+    // }
+
+
+	if ($timechange) {
+        $change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}費率{$stmt_setting['rate']} 修改為 開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+    } else {
+        $change_log .= "開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']} ";
+    }
+	if ($ps6_check) {
+		$change_log .= "已勾選週六";
+	} else {
+		$change_log .= "未勾選週六";
 	}
+	if ($ps0_check) {
+		$change_log .= "已勾選週日";
+	} else {
+		$change_log .= "未勾選週日";
+	}
+
+	// if ($originalSaturdayCheck) {
+	// 	$change_log .= "已勾選週六 ";
+	// } else {
+	// 	$change_log .= "未勾選週六 ";
+	// }
+	
+	// if ($ps6_check) {
+	// 	$change_log .= "修改為 已勾選週六 ";
+	// } else {
+	// 	$change_log .= "修改為 未勾選週六 ";
+	// }
+	
+	// if ($originalSundayCheck) {
+	// 	$change_log .= "已勾選週日 ";
+	// } else {
+	// 	$change_log .= "未勾選週日 ";
+	// }
+	
+	// if ($ps0_check) {
+	// 	$change_log .= "修改為 已勾選週日";
+	// } else {
+	// 	$change_log .= "修改為 未勾選週日";
+	// }
+	
+	// 如只修改週六or週日沒有更改時間or費率一樣要加入log中
+	// if (!$timechange) {
+	// 	$change_log .= "(開始時間{$update_result['starttime']}結束時間{$update_result['endtime']}費率{$update_result['rate']})";
+	// }
 	// 寫入log_list
 	$content = $admin_id. "; 管理員修改了離峰時段設定; ". $change_log;
 	get_log_list($content);

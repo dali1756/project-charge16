@@ -25,7 +25,7 @@ for($i=0; $i<=1; $i++) {
 	<div class="row">
 	<?php if($_GET[error] == 1){ ?>
 		<div style="margin: 0 auto; text-align: center; width: 600px;" class="alert alert-danger" role="alert">
-			<strong>【Error】設定失敗</strong>
+			<strong>【Error】目前已套用此設定，無須重新設定。</strong>
 		</div>
 	<?php } elseif ($_GET[error] == 2) { ?>
 		<div style="margin: 0 auto; text-align: center; width: 600px;" class="alert alert-danger" role="alert">

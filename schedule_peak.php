@@ -67,12 +67,10 @@ if($row) {
 						<tr>
 							<td align="right" width='10%'><!-- 週 : --></td>
 							<td align='left' width='40%'>
-								<!-- <select name='weekday'><?php echo $week_opt ?> -->
 								<input type='checkbox' id='ps6' class='pscheckbox' name='ps6' value='1'><label for='ps6'>週六</label>
 								<input type='checkbox' id='ps0' class='pscheckbox' name='ps0' value='1'><label for='ps0'>週日</label>
 							</td>
 							<td align="right" width='10%'><!-- 模式 : --></td>
-							<td width='40%'><!-- <select class="form-control" name='mode'><?php echo $mode_opt ?></select> --></td>
 						</tr>
 						<tr>
 							<td align="right">

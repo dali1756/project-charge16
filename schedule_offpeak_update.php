@@ -29,7 +29,7 @@ if($result) {
 	$change_log = "";
 	// 比較修改前後差異
 	if ($stmt_setting["prepaid"] != $stmt_result["prepaid"] || $stmt_setting["rate"] != $stmt_result["rate"] || $stmt_setting["starttime"] != $stmt_result["starttime"] || $stmt_setting["endtime"] != $stmt_result["endtime"]) {
-		$change_log .= "開始時間{$stmt_setting['starttime']}結束時間{$stmt_setting['endtime']}預付(度){$stmt_setting['prepaid']}費率{$stmt_setting['rate']} 修改為 開始時間{$stmt_result['starttime']}結束時間{$stmt_result['endtime']}預付(度){$stmt_result['prepaid']}費率{$stmt_result['rate']}";
+		$change_log .= "開始時間{$stmt_setting['endtime']}結束時間{$stmt_setting['starttime']}預付(度){$stmt_setting['prepaid']}費率{$stmt_setting['rate']} 修改為 開始時間{$stmt_result['endtime']}結束時間{$stmt_result['starttime']}預付(度){$stmt_result['prepaid']}費率{$stmt_result['rate']}";
 	}
 	// 寫入log_list
 	$content = $admin_id. "; 管理員修改了一般時段設定; ". $change_log;
