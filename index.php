@@ -1,18 +1,24 @@
 <?php 
 include('header_layout.php');
 include('nav.php');
+
 if (isset($_SESSION["text"]) && $_SESSION["text"] != "") {
     echo '<script language = "javascript">';
     echo 'alert("'. $_SESSION["text"]. '")';
     echo '</script>';
     unset($_SESSION["text"]);   // 清除session
 }
+
+
 $message_arr = array('1' => '帳號密碼錯誤，請重新登入');
 $contact = "";
 $message = $message_arr[$_GET['error']];
+
 $title   = $lang->line("index.title");
 $desc    = $lang->line("index.descrip");
+
 ?>
+
 	<section id='banner'>  
 		<div style='margin-top: 0px;' class='content'>
 			<h1 style='font-weight:bold;text-shadow: shadow1, shadow2, shadow3;'>&nbsp;<?php // echo $title ?>&nbsp;</h1>
@@ -21,7 +27,11 @@ $desc    = $lang->line("index.descrip");
 			</p>
 		</div>
 	</section>
+
 <?php include('footer_layout.php'); ?>
+
+
+
 <div id='identity'>
 	<form id='adminlogin' action='chk_adminlogin.php' method='post'>
 		<div class='login form title mb-5'>管理員登入</div>

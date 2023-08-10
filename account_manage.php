@@ -4,14 +4,15 @@
     include('nav.php');
     include('chk_log_in.php');
     include("account_status_update.php");
-    // 限制權限不等於1的不可進入此頁面
+    // 限制權限不等於1 and 99的不可進入此頁面
 	$id = $_SESSION["admin_user"]["id"];
 	$sql = "SELECT a.data_type FROM admin a WHERE id = ?";
 	$stmt = $PDOLink->prepare($sql);
 	$stmt->bindParam(1, $id);
 	$stmt->execute();
 	$result = $stmt->fetch(PDO::FETCH_ASSOC);
-	if ($result["data_type"] != 1) {
+    // 判斷權限狀態 1 和 99 除外的不能進入頁面
+	if ($result["data_type"] != 1 && $result["data_type"] != 99) {
 		header("location: index.php");
 		exit();
 	}
@@ -23,13 +24,13 @@
             $data_type = $_POST["data_type"];
             $result = getcreate($PDOLink, $cname, $id, $data_type);
             if ($result) {
-                $_SESSION["message"] = "帳號已成功創建。";
+                $_SESSION['message'] = '帳號已成功創建。';
                 $_SESSION["message_type"] = "success";
             } else {
                 $_SESSION['message'] = '帳號創建失敗或已存在相同帳號。';
                 $_SESSION["message_type"] = "error";
             }
-            header('Location: account_manage.php');
+            header('location: account_manage.php');
             ob_end_flush();
             exit();
         }
@@ -37,13 +38,13 @@
             if (getUpdate($PDOLink, $_POST["cname"], $_POST["id"], $_POST["data_type"], $_POST["admin_id"])) {
                 $_SESSION['message'] = '編輯成功!';
                 $_SESSION["message_type"] = "success";
-                header('Location: account_manage.php');
+                header('location: account_manage.php');
                 ob_end_flush();
                 exit();
             } else {
                 $_SESSION['message'] = '編輯失敗!';
                 $_SESSION["message_type"] = "error";
-                header('Location: account_manage.php');
+                header('location: account_manage.php');
                 ob_end_flush();
                 exit();
             }
@@ -137,6 +138,8 @@
                                         echo "超級管理員";
                                     } else if ($account["data_type"] == 2) {
                                         echo "一般管理員";
+                                    } else if ($account["data_type"] == 99) {
+                                        echo "合創";
                                     } else {
                                         echo "客戶";
                                     }
@@ -146,7 +149,7 @@
                                 <?php // 點選編輯時自動帶入人員資料 ?>
                                 <a href="#" class="edit-btn" data-toggle="modal" data-target="#editModal" data-id="<?php echo $account["id"]; ?>" data-cname="<?php echo $account["cname"]; ?>" data-data_type="<?php echo $account["data_type"]; ?>" data-placement="bottom" title="編輯"><i class="fas fa-pencil-alt"></i></a>
                                 <a onclick = "reset('<?php echo $account['id']; ?>')" href = "#" data-toggle = "tooltip" data-placement = "bottom" title = "還原密碼"><i class = "fas fa-sync-alt"></i></a>
-                                <?php if ($account["data_type"] != 1):   // 超級管理員無法把自己啟用or停用 ?>
+                                <?php if ($account["data_type"] != 1 && $account["data_type"] != 99):   // 超級管理員和合創無法把自己啟用or停用 ?>
                                     <?php if ($account["status"] == "Y"): ?>
                                         <a onclick="stay('<?php echo $account['id']; ?>')" href="#" data-toggle="tooltip" data-placement="bottom" title="停用帳號"><i class="fas fa-trash-alt"></i></a>
                                     <?php elseif ($account["status"] == "X"): ?>

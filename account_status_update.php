@@ -1,4 +1,8 @@
 <?php
+    // ini_set('display_errors', 1);
+    // ini_set('display_startup_errors', 1);
+    // error_reporting(E_ALL);
+    
     ob_start();
     include('header_layout.php');
     // 創建帳號
@@ -123,6 +127,7 @@
         $type = $_GET["status"];
         $success = false;
         $message = '';
+    
         if ($type == "active") {
             // 啟用後會將密碼還原為預設值88888
             $success = updateStatus($PDOLink, $sn, "Y", "88888", $admin_id);
