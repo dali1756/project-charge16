@@ -1,8 +1,4 @@
-/*調整修改用CSS*/
-/*footer蓋過內容問題*/
-#footer{
-    position: relative;
-}
+
  /*文字*/
  /*大標題*/
 .h3, .h4 {
@@ -202,7 +198,7 @@ button:hover{
 }
 
 .search-mar{
-    margin: 0 100px;
+    /* margin: 0 100px; */
 }
 
 /*上下頁BTN*/

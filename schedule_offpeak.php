@@ -4,9 +4,9 @@ include('nav.php');
 include('chk_log_in.php'); 
 $pagesize = 10;
 $sql  = "SELECT s.*, sc.starttime, sc.endtime FROM `seat` s
-		 LEFT JOIN `schedule` sc ON sc.seat_id = s.id WHERE sc.weeknumber NOT IN (0, 6)";
+		 LEFT JOIN `schedule` sc ON sc.seat_id = s.id WHERE sc.weeknumber NOT IN (0, 6) GROUP BY `charging_type`";
 $rs   = $PDOLink->query($sql);
-$row  = $rs->fetch();
+$row  = $rs->fetchAll();
 if($row) {
 	$btn_name = "修改";
 	$sql   = "SELECT (SELECT COUNT(*) FROM `schedule` WHERE weeknumber = '6' AND `enable` = 1) as 'ps6', 
@@ -68,24 +68,27 @@ for($i=0; $i < 7; $i++) {
 								開始時間 : 
 							</td>
 							<td width='40%'>
-								<input disabled class="form-control" type="time" name="start_time" placeholder="hrs:mins" value="<?php echo $row['endtime'] ?>">
+								<input disabled class="form-control" type="time" name="start_time" placeholder="hrs:mins" value="<?php echo $row[0]['endtime'] ?>">
 							</td>
 							<td align="right" width='10%'>
 								結束時間 : 
 							</td>
 							<td>
-								<input disabled class="form-control" type="time" name="end_time" placeholder="hrs:mins" value="<?php echo $row['starttime'] ?>">
+								<input disabled class="form-control" type="time" name="end_time" placeholder="hrs:mins" value="<?php echo $row[0]['starttime'] ?>">
 							</td>
+						</tr>
+						<tr>
+							<td colspan='4' align='center'>汽車設定&nbsp;</td>
 						</tr>
 						<tr>
 							<td align='right'>預付 (度) : </td>
 							<td align='center'>
-								<input type='text' name='prepay' class="form-control" value='<?php echo $row['prepaid'] ?>' 
+								<input type='text' name='prepay' class="form-control" value='<?php if ($row[0]["charging_type"] == 1) { echo $row[0]['prepaid']; } ?>' 
 									onkeyup="value=value.replace(/[^\d.]/g,'').replace(/^\./g,'').replace(/\.{2,}/g,'.').replace('.','$#$').replace(/\./g,'').replace('$#$','.');">
 							</td>
 							<td align='right'>費率 : </td>
 							<td align='center'>
-								<input type='text' name='rate' class="form-control" value='<?php echo $row['rate'] ?>' 
+								<input type='text' name='rate' class="form-control" value='<?php if ($row[0]["charging_type"] == 1) { echo $row[0]['rate']; } ?>' 
 									onkeyup="value=value.replace(/[^\d.]/g,'').replace(/^\./g,'').replace(/\.{2,}/g,'.').replace('.','$#$').replace(/\./g,'').replace('$#$','.');">
 							</td>
 						</tr>
@@ -93,16 +96,33 @@ for($i=0; $i < 7; $i++) {
 							<td align="right" width='10%'>預付金額 : </td><td colspan='3' align='left' width='40%' id='prepay'></td>
 						</tr>
 						<tr>
+							<td colspan='4' align='center'>機車設定&nbsp;</td>
+						</tr>
+						<tr>
+							<td align='right'>預付 (度) : </td>
+							<td align='center'>
+								<input type='text' name='prepay_mo' class="form-control" value='<?php if ($row[1]["charging_type"] == 2) { echo $row[1]['prepaid']; } ?>' 
+									onkeyup="value=value.replace(/[^\d.]/g,'').replace(/^\./g,'').replace(/\.{2,}/g,'.').replace('.','$#$').replace(/\./g,'').replace('$#$','.');">
+							</td>
+							<td align='right'>費率 : </td>
+							<td align='center'>
+								<input type='text' name='rate_mo' class="form-control" value='<?php if ($row[1]["charging_type"] == 2) { echo $row[1]['rate']; } ?>' 
+									onkeyup="value=value.replace(/[^\d.]/g,'').replace(/^\./g,'').replace(/\.{2,}/g,'.').replace('.','$#$').replace(/\./g,'').replace('$#$','.');">
+							</td>
+						</tr>
+						<tr>
+							<td align="right" width='10%'>預付金額 : </td><td colspan='3' align='left' width='40%' id='prepay_mo'></td>
+						</tr>
+						<tr>
 							<td colspan='4' align='center'><button type='submit' id='btn_submit' class='form-control btn-primary'><?php echo $btn_name ?></button></td>
 						</tr> 
-					</table>			
+					</table>	
 					<input type='hidden' name='act' value='<?php echo $act ?>'>
 				</form>
 			</div>
 		</div>
 	</div>
 </section>
-
 <style>
 .table>tbody>tr>td{
     vertical-align: middle;
@@ -120,13 +140,22 @@ $(document).ready(function() {
 	});
 	$("input").keyup(function(){
 		calc_result();
+		calc_result_mo();
 	});
+	// 汽車
 	function calc_result() {
 		var prepaid = $('input[type=text][name=prepay').val();
 		var rate    = $('input[type=text][name=rate').val();
 		$('#prepay').html( prepaid * rate );
 	}
 	calc_result();
+	// 機車
+	function calc_result_mo() {
+		var prepaid = $('input[type=text][name=prepay_mo').val();
+		var rate    = $('input[type=text][name=rate_mo').val();
+		$('#prepay_mo').html( prepaid * rate );
+	}
+	calc_result_mo();
 });
 </script>
 <?php include('footer_layout.php'); ?>
