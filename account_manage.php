@@ -6,7 +6,7 @@
     include("account_status_update.php");
     // 限制權限不等於1 and 99的不可進入此頁面
 	$id = $_SESSION["admin_user"]["id"];
-	$sql = "SELECT a.data_type FROM admin a WHERE id = ?";
+	$sql = "SELECT data_type FROM admin WHERE id = ?";
 	$stmt = $PDOLink->prepare($sql);
 	$stmt->bindParam(1, $id);
 	$stmt->execute();
@@ -200,6 +200,7 @@
             </div>
         </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
     function reset(id){
         var msg = "確認提示\n您確定要還原密碼嗎?";
@@ -208,19 +209,35 @@
             location.replace("account_manage.php?sn="+id+"&action=pwd");
         }
     }
-    function active(id){
-    var msg = "確認提示\n啟用後，恢復先前操作本系統之使用權限，\n並還原預設密碼：88888 (請務必變更)\n確定要啟用嗎?";
-        if(confirm(msg))
-        {
-            location.replace("account_manage.php?sn="+id+"&status=active");
+
+    function updateStatus(accountId, status) {
+        $.ajax({
+            url: 'account_status_update.php', 
+            type: 'GET', 
+            data: {
+                sn: accountId,
+                status: status
+            }, 
+            success: function(response) {
+                // alert('帳號狀態已更新！');
+                location.reload(); // 如果你仍想刷新頁面，可以保留這行。否則，刪除它。
+            }, 
+            error: function(error) {
+                alert('更新失敗，請稍後重試！');
+            }
+        });
+    }
+    function stay(accountId) {
+        var msg = "確認提示\n帳號將停用\n您確定要停用嗎?";
+        if (confirm(msg)) {
+            updateStatus(accountId, 'stay');
         }
     }
-    function stay(id){
-        var msg = "確認提示\n帳號將停用\n您確定要停用嗎?";
-            if(confirm(msg))
-            {
-                location.replace("account_manage.php?sn="+id+"&status=stay");
-            }
+    function active(accountId) {
+        var msg = "確認提示\n啟用後，恢復先前操作本系統之使用權限，\n並還原預設密碼：88888 (請務必變更)\n確定要啟用嗎?";
+        if (confirm(msg)) {
+            updateStatus(accountId, 'active');
+        }
     }
     function editMember(event, sn){
         var msg = "是否變更資料？";
