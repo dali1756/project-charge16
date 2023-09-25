@@ -21,7 +21,7 @@
 	$email  = $row['email'];
 ?>
 <section id="main" class="wrapper">
-	<!-- <div class='rwd-box'></div> -->	
+	<?php // 密碼修改 ?>	
 	<h2 style="margin-top: -30px;" align="center">密碼修改</h2>
 	<div class="col-12"><a href="member.php"><i class="fas fa-chevron-circle-left fa-3x"></i><label class='previous'></label></a></div>
 	
